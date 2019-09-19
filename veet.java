@@ -1,3 +1,4 @@
+package veet;
 
 import java.util.Scanner;
 
@@ -12,7 +13,7 @@ public class veet {
 		int age = 0;// initierat variabel
 
 		Scanner input = new Scanner(System.in);// gör det möjligt att få input från
- 
+
 		if (again) {
 			System.out.println("Hur gammal är du?");
 			age = input.nextInt();
@@ -21,11 +22,16 @@ public class veet {
 
 				System.out.println("Du är gammal nog, grattis!");
 				System.out.println("bara så du vet så får du åka moppe");
-			} else if (age > 14 && age < 18) {
+
+			}
+
+			else if (age > 14 && age < 18) {
+
 				System.out.println("Du är för ung för bil men du kan köra moppe");
 			}
 
 			else { // om villkoret inte uppfylls körs else
+
 				System.out.println("Du är för ung, tyvär!");
 			}
 
