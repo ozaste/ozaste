@@ -67,7 +67,7 @@ public class homework38 {
 					System.out.println("minst:" + number5);}
 				
 	double medel = (number1 + number2 + number3 + number4 + number5)/5;
-	System.out.println("medelvärd:" + medel);
+	System.out.println("medel:" + medel);
 	
 		}
 			
