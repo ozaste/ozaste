@@ -1,0 +1,251 @@
+import java.util.Random;
+import java.util.Scanner;
+
+public class Spelet {  // Hej Tomas!
+	
+	static Scanner input = new Scanner(System.in);
+
+	/**
+	 * Här är själva spelet som innehåller alla metoder. 
+	 * @param args
+	 */
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		while (true) {   // hela denna koden går i en while loop för att man ska kunna köra igen utan att behöva starta om programmet. 
+			int choise;	    // här skapar jag två int:s som ska användas i koden. 
+			int answer;	
+
+			while (true) {  // Här använde jag mig av en while loop för att få programet att säga ifrån när användaren antingen skrev ett ogiltig inlägg eller fel siffra vid val i menyn.  
+				menu();
+
+				choise = trycatch();
+				
+				if (choise < 1 || choise > 4)
+				{
+					System.out.println("Chose a number between 1 and 4. ");
+					continue;
+				}
+				
+				break;
+			}
+			
+			switch (choise) {  // här är alla svårighetsgradsmetoderna som man kan välja mellan. Jag använde mig av swich case för att ge användaren möjlighet att välja alternativ. 
+			case 1:
+				EasyMode();
+				break;
+			case 2:
+				NormalMode();
+				break;
+			case 3:
+				HardMode();
+				break;
+			case 4:
+				System.out.println("Game over ...");
+				return;
+			}
+
+			System.out.println("Do you want to go again?");  // När man antingen vunnit eller förlorat frågar programett här ifall man vill köra igen. 
+			System.out.println("(1)Yes");
+			System.out.println("(2)No");
+
+			answer = trycatch();  
+
+			if (answer == 2) {  
+				System.out.println("Game over ...");
+				return;
+			}
+
+		}
+
+	}
+
+	/**
+	 * Denna metod är en svårighetsgrad till spelet (lätt)
+	 */
+	
+	public static void EasyMode() {
+
+		int choise;
+		int randomNumber = 0;
+		int guess;
+		int guesses = 20;
+
+		System.out.println("Choose two numbers for your interval");
+
+		int number1 = trycatch();
+		int number2 = trycatch();
+
+		System.out.println("choose a number in the chosen interval " + number1 + " and " + number2);  
+
+		randomNumber = (int) (Math.random() * (number2 - number1) + (number1));  // här skapas random siffran genom matte. 
+
+		for (int i = 0; i < guesses; i++) {  // här är en kod som får gissnings funktionen att fungera. 
+
+			guess = trycatch();
+
+			if (guess == randomNumber) {  // Här är en if som säger vad som händer när ens gissning är lika med random siffran. 
+				System.out.println("correct");
+				System.out.println("you won!");
+				break;
+			} else {                      // I denna del visas vad som händer om gissningen är fel. 
+				System.out.println("wrong");
+				if (guess > randomNumber) {
+					System.out.println("Too high");
+				} else {
+					System.out.println("Too low");
+				}
+				if (guess > number2) {  // Här 
+					System.out.println("choose a number in your chosen interval " + number1 + " and " + number2);
+				}
+				if (guess < number1) {
+					System.out.println("choose a number in your chosen interval " + number1 + " and " + number2);
+				}
+
+			}
+			if (guess == guesses) {  // här visas vad som händer när du har gissat alla dina givna gissningar. 
+				System.out.println("out of guesses, you lost");
+				System.out.println("The number was " + randomNumber);
+			}
+
+		}
+
+	}
+
+	/**
+	 * Denna metod är en svårighetsgrad till spelet (normal)
+	 */
+	
+	public static void NormalMode() {  // I denna metoden förändras ingenting från EasyMode(), förutom antalet gissningar. 
+		
+		int randomNumber = 0;
+		int guess;
+		int guesses = 10;
+
+		System.out.println("Choose two numbers for your interval");
+
+		int number1 = trycatch();
+		int number2 = trycatch();
+
+		System.out.println("choose a number in the chosen interval " + number1 + " and " + number2);
+
+		randomNumber = (int) (Math.random() * (number2 - number1) + (number1));
+
+		for (int i = 0; i < guesses; i++) {
+
+			guess = trycatch();
+
+			if (guess == randomNumber) {
+				System.out.println("correct");
+				System.out.println("you won!");
+				break;
+			} else {
+				System.out.println("wrong");
+				if (guess > randomNumber) {
+					System.out.println("Too high");
+				} else {
+					System.out.println("Too low");
+				}
+				if (guess > number2) {
+					System.out.println("choose a number in your chosen interval " + number1 + " and " + number2);
+				}
+				if (guess < number1) {
+					System.out.println("choose a number in your chosen interval " + number1 + " and " + number2);
+				}
+			}
+			if (guess == guesses) {
+				System.out.println("out of guesses, you lost");
+				System.out.println("The number was " + randomNumber);
+			}
+		}
+
+	}
+
+	/**
+	 * Denna metod är en svårighetsgrad till spelet (svår) 
+	 */
+	
+	public static void HardMode() {
+
+		int randomNumber = 0; // I denna metoden förändras ingenting från EasyMode(), förutom antalet gissningar.
+		int guess;
+		int guesses = 5;
+
+		System.out.println("Choose two numbers for your interval");
+
+		int number1 = trycatch();
+		int number2 = trycatch();
+
+		System.out.println("choose a number in the chosen interval " + number1 + " and " + number2);
+
+		randomNumber = (int) (Math.random() * (number2 - number1) + (number1));
+
+		for (int i = 0; i < guesses; i++) {
+
+			guess = trycatch();
+
+			if (guess == randomNumber) {
+				System.out.println("correct");
+				System.out.println("you won!");
+				break;
+			} else {
+				System.out.println("wrong");
+				if (guess > randomNumber) {
+					System.out.println("Too high");
+				} else {
+					System.out.println("Too low");
+				}
+				if (guess > number2) {
+					System.out.println("choose a number in your chosen interval " + number1 + " and " + number2);
+				}
+				if (guess < number1) {
+					System.out.println("choose a number in your chosen interval " + number1 + " and " + number2);
+				}
+			}
+			if (guess == guesses) {
+				System.out.println("out of guesses, you lost");
+				System.out.println("The number was " + randomNumber);
+			}
+
+		}
+	}
+
+	
+	/**
+	 * Denna metod är själva menyn för spelet
+	 */
+	
+	public static void menu() {
+
+		System.out.println("Welcome to this game!");
+		System.out.println("Choose difficulty!");
+		System.out.println("(1) Easy - 20 tries");
+		System.out.println("(2) Normal - 10 tries");
+		System.out.println("(3) Hard - 5 tries");
+		System.out.println("(4) Quit");
+
+	}
+	
+	/**
+	 * Denna metod är en trycatch som används ifall att användaren skriver en ogliltig input. 
+	 * @return
+	 */
+	
+	public static int trycatch() {
+
+		int error;
+		while (true) {
+			try {
+				error = input.nextInt(); // "input.nextInt()" byts till "error" vilket gör att jag kan använda metoden där det står "input.nextInt().
+				return error;
+				
+			}catch (Exception e) { //denna kod identifierar ogiltig input. 
+				System.out.println("write an integer");
+				input.nextLine();
+			}
+		}
+		
+	}
+	
+}
